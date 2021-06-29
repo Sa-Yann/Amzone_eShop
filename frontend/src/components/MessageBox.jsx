@@ -5,6 +5,7 @@ function MessageBox(props) {
     // define in teh children component HomePage.jsx
     return (
         <div className={`alert alert-${props.variant || 'info'}`}>
+            {/* if it serror we wil show red messages if its info we ll  show blue messages check index.csss */}
             {/* we show the message */}
             {props.children}
             {/* children is a special  prop that show the content in the component it was declared 
