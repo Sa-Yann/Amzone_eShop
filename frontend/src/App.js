@@ -1,4 +1,5 @@
 import React from 'react';
+// Set  "proxy": "http://localhost:5000", to link any request from this project to the backend API
 import { BrowserRouter, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
