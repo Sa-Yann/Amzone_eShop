@@ -27,7 +27,7 @@ const data = {
             name: 'Celio Slim Shirt',
             category: 'shirts',
             images: '/assets/p3.jpg',
-            price: 14,
+            price: 140,
             brand: 'Celio',
             rating: 4.8,
             numReviews: 12,
@@ -68,3 +68,4 @@ const data = {
         }
     ]
 }
+export default data
