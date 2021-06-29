@@ -1,0 +1,130 @@
+html {
+    /* setting the ratio between px and rem to 1/10 => 1rem = 10px */
+    /* browser defautl font size is 16px */
+    /*  16px x 62.5% = 10px => 1 rem */
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    /* setting hight to full hight : height: 100vh;*/
+    height: 100vh;
+    /* we want font to be default 16px so 1.6rem */
+    font-size: 1.6rem;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* layout */
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    height: 100%
+}
+
+header {
+    /* liking the header area to the grid template set-up */
+    grid-area: header;
+    background-color: #203040;
+}
+
+main {
+    grid-area: main;
+    padding: 1rem;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #203040;
+    color: #ffffff;
+}
+
+/* Common Style rules */
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff8000;
+}
+
+h1 {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+}
+
+h2 {
+    font-size: 1.6rem;
+    padding: 1rem 0;
+}
+
+/* Header */
+
+header a  {
+    color: #ffffff;
+    padding: 1rem;
+}
+
+a.brand {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.rowFlexJustify {
+    display: flex;
+    /* we wnat the items to be one under the other in case of nt enought width (responsive behavior) */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rowFlexJustify.center {
+    justify-content: center;
+}
+
+/* Images */
+
+img { 
+    border-radius: 0.5rem;
+}
+
+img.medium {
+    max-width: 29rem;
+    width: 100%;
+}
+
+/* Card */
+.card {
+    border: 0.1rem #c0c0c0 solid;
+    background-color: #f8f8f8;
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
+.card__Body {
+    padding: 1rem;
+}
+
+.card__Body > * {
+    /* creating space between items */
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 2rem;
+}
+
+/* Ratings */
+
+.rating span {
+    color: #f0C040;
+    margin: 0.1;
+}
