@@ -134,3 +134,8 @@ img.medium {
   color: #f0C040;
   margin: 0.1;
 }
+
+.rating span:last-child {
+  color: #404040;
+  margin-left: 0.5rem;
+}
