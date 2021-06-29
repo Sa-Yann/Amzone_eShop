@@ -204,7 +204,29 @@ img.large {
   font-weight: 700;
 }
 
-.noStock {
+/* .noStock {
   color: purple;
   font-weight: 700;
+} */
+/* .nostock is replaced by .danger as established variant */
+.danger {
+  color: purple;
+  font-weight: 700;
+}
+
+.alert {
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+
+.alert-info {
+  color: #2020a0;
+  background-color: #e0e0ff;
+}
+
+/* cause we use varaint="danger in MessageBox alert-error class is changed alert-variant */
+.alert-danger {
+  color: #a02020;
+  background-color: #ffe0e0;
 }
