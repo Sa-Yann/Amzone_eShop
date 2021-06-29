@@ -71,6 +71,39 @@ h2 {
   padding: 1rem 0;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid gray;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 0.1rem black solid;
+}
+
+button.primary {
+  background-color: #f0c040;
+}
+
+button.block {
+  width: 100%;
+}
 /* Header */
 
 header a  {
@@ -96,6 +129,25 @@ a.brand {
   justify-content: center;
 }
 
+
+/* ProductPage */
+
+.rowFlexJustify.rowTop {
+  /* Getting itmes in column form centered to Top 0 / Right 0 */
+  align-items: flex-start;
+}
+
+.col-1 {
+  /* first 1: col-1 (productInfo and add to card area of ProductPage) occupy 1 of 4 - second 1: for it s shrinkable 25rem  */
+  flex: 1 1 25rem
+}
+
+.col-2 {
+  flex: 2 1 50rem
+}
+
+
+
 /* Images */
 
 img { 
@@ -107,7 +159,12 @@ img.medium {
   width: 100%;
 }
 
+img.large {
+  width: 100%;
+}
+
 /* Card */
+
 .card {
   border: 0.1rem #c0c0c0 solid;
   background-color: #f8f8f8;
@@ -138,4 +195,16 @@ img.medium {
 .rating span:last-child {
   color: #404040;
   margin-left: 0.5rem;
+}
+
+/* Alerts */
+
+.inStock {
+  color: rgb(64, 196, 52);
+  font-weight: 700;
+}
+
+.noStock {
+  color: purple;
+  font-weight: 700;
 }

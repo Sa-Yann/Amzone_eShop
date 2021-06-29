@@ -1,6 +1,10 @@
 import React from 'react';
-import data from './data';
-import Product from "./components/Product";
+import { BrowserRouter, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
+
+
+
 
 
 function App() {
@@ -8,7 +12,8 @@ function App() {
   
 
   return (
-    <div className="grid-container">
+    <BrowserRouter>
+        <div className="grid-container">
             <header className="rowFlexJustify">
                 <div>
                     <a className="brand" href="/">Amazone SaiYann</a>
@@ -19,18 +24,16 @@ function App() {
                 </div>
             </header>
             <main>
-                <div className="rowFlexJustify center">
-                    {
-                      data.products.map((product) => (
-                        <Product  key={product._id} product={product}/>
-                      ))
-                    }
-                </div>
+              <Route path="/" component={HomePage} exact></Route>
+              <Route path="/product/:id" component={ProductPage}></Route>
+                
             </main>
             <footer className="rowFlexJustify center">
                 <p>All right reserved</p>
             </footer >
-        </div>
+          </div>
+    </BrowserRouter>
+    
   );
 }
 export default App;
