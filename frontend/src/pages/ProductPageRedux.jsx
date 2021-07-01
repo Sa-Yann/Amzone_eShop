@@ -18,6 +18,7 @@ function ProductPage(props) {
     // we need the id at the end of the url/route that is fecthing
     const productId = props.match.params.id;
     const [qty, setQty] = useState(1)
+    // console.log(qty);
     const productDetails = useSelector((state => state.productDetails));
     const { loading, error, product } = productDetails;
 
@@ -26,7 +27,9 @@ function ProductPage(props) {
         // this function redirect to the cart page via url carrying:
         // the choosen articles qty using location.search. property&method 
         // and the article id after the questionMark that will be extract using match.params.id protocole
-        props.history.push(`/cart/${productId}?qty={qty}`);
+        props.history.push(`/cart/${productId}?qty=${qty}`);
+        console.log(props)
+        console.log(props.history)
     }
 
     useEffect(() => {
@@ -119,8 +122,9 @@ function ProductPage(props) {
                                                                                 </option>
                                                                             )
                                                                         )
+                                                                        
                                                                     }
-
+                                                                    
                                                                 </select>
                                                             </div>
                                                         </div>
