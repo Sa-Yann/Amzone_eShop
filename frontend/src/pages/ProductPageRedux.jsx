@@ -40,7 +40,7 @@ function ProductPage(props) {
     //     return <div>Product Not Found</div>
     // }
     return (
-        <div>
+    
             <div className="rowFlexJustify center">
                 {
                     loading ? 
@@ -103,8 +103,8 @@ function ProductPage(props) {
                                             {
                                                 product.countInStock && (
                                                     <>
-                                                        <div>
-                                                            <div className="rowFlexJustify">
+                                                        <div className="rowFlexJustify">
+                                                            <div >
                                                                 <h3>Quantity</h3>
                                                             </div>
                                                             <div>
@@ -146,7 +146,7 @@ function ProductPage(props) {
                     ) 
                 }
             </div>
-        </div>
+        
         
     )
 }
