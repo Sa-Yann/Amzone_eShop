@@ -5,10 +5,27 @@ import data from './data.js';
 
 const app = express();
 
+
+// Route to fetch details from a specfic product
+app.get('/api/products/:id', (req, res) => {
+    // first we search for the product
+    const product = data.products.find((x) => x._id === req.params.id)
+    
+    if(product) {
+        res.send(product);
+        console.log(product);
+    } else {
+        res.status(404).send(`Product not Found`)
+    }
+    
+})
+
+// Route to get to 'Home' page
 app.get('/', (req, res) => {
     res.send('Server is Running')
 });
 
+// Route to fetch all the products in store
 app.get('/api/products', (req, res) => {
     res.send(data.products);
 })

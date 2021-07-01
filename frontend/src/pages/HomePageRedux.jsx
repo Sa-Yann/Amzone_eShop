@@ -45,7 +45,7 @@ function HomePage() {
             //     }
             // }
             // fetchData();
-    },[])
+    },[dispatch])
 
     return (
         <div>

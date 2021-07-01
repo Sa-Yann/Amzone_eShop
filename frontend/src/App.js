@@ -2,7 +2,7 @@ import React from 'react';
 // Set  "proxy": "http://localhost:5000", to link any request from this project to the backend API
 import { BrowserRouter, Route } from 'react-router-dom'
 import HomePageRedux from './pages/HomePageRedux';
-import ProductPage from './pages/ProductPage';
+import ProductPageRedux from './pages/ProductPageRedux';
 
 
 
@@ -26,7 +26,7 @@ function App() {
             </header>
             <main>
               <Route path="/" component={HomePageRedux} exact></Route>
-              <Route path="/product/:id" component={ProductPage}></Route>
+              <Route path="/product/:id" component={ProductPageRedux}></Route>
                 
             </main>
             <footer className="rowFlexJustify center">

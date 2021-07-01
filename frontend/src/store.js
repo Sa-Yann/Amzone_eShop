@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 // is met. The inner function receives the store methods dispatch and 
 // getState as parameters.
 // import data from './data';
-import { productListReducer } from './reducers/productReducers';
+import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 
 const initialState = {};
 
@@ -20,6 +20,7 @@ const initialState = {};
 // 2nd Case : we use datas from redux Store
 const reducer =  combineReducers({
     productList: productListReducer,
+    productDetails: productDetailsReducer
 })
 
 // via composeEnhancer the react App is connected to the redux  Store & the redux devtool in Chrome
