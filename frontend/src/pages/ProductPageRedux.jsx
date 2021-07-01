@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct } from './../actions/productActions'
 import { Link } from 'react-router-dom';
@@ -17,8 +17,17 @@ function ProductPage(props) {
     const dispatch = useDispatch();
     // we need the id at the end of the url/route that is fecthing
     const productId = props.match.params.id;
+    const [qty, setQty] = useState(1)
     const productDetails = useSelector((state => state.productDetails));
     const { loading, error, product } = productDetails;
+
+
+    const addToCardHandler = () => {
+        // this function redirect to the cart page via url carrying:
+        // the choosen articles qty using location.search. property&method 
+        // and the article id after the questionMark that will be extract using match.params.id protocole
+        props.history.push(`/cart/${productId}?qty={qty}`);
+    }
 
     useEffect(() => {
         dispatch(detailsProduct(productId))
@@ -88,7 +97,42 @@ function ProductPage(props) {
                                             </div>
                                         </li>
                                         <li>
-                                            <button className="primary block">Add To Cart</button>
+                                            {
+                                                product.countInStock && (
+                                                    <>
+                                                        <div>
+                                                            <div className="rowFlexJustify">
+                                                                <h3>Quantity</h3>
+                                                            </div>
+                                                            <div>
+                                                                <select
+                                                                    value={qty}
+                                                                    onChange={(e) => setQty(e.target.value)}
+                                                                >
+                                                                    {/* number of items choosable must match the amount of items in stock*/}
+                                                                    {
+                                                                        // Making an array from the countInStock row to be abble to map the keys
+                                                                        [...Array(product.countInStock).keys()].map(
+                                                                            (x) => (
+                                                                                <option key={x+1} value={x+1}>
+                                                                                    {x+1}
+                                                                                </option>
+                                                                            )
+                                                                        )
+                                                                    }
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )
+                                            }
+                                        </li>
+                                        <li>
+                                            <button 
+                                                className="primary block"
+                                                onClick={addToCardHandler}
+                                            >Add To Cart</button>
                                         </li>
                                     </ul>
                                 </div>

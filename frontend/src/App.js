@@ -25,9 +25,10 @@ function App() {
                 </div>
             </header>
             <main>
-              <Route path="/" component={HomePageRedux} exact></Route>
-              <Route path="/product/:id" component={ProductPageRedux}></Route>
-                
+              <Route path="/" component={HomePageRedux} exact />
+              <Route path="/product/:id" component={ProductPageRedux} />
+              {/* path="product/id?: ? cause cart should be accessible directly*/}
+              <Route path="product/id?"/>   
             </main>
             <footer className="rowFlexJustify center">
                 <p>All right reserved</p>
