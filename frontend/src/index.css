@@ -153,7 +153,7 @@ a.brand {
 /* ProductPage */
 
 .rowFlexJustify.rowTop {
-  /* Getting itmes in column form centered to Top 0 / Right 0 */
+  /* Getting items in column form centered to Top 0 / Right 0 */
   align-items: flex-start;
 }
 
@@ -166,12 +166,21 @@ a.brand {
   flex: 2 1 50rem
 }
 
+.min-30 {
+  min-width: 30rem;
+}
+
 
 
 /* Images */
 
 img { 
   border-radius: 0.5rem;
+}
+
+img.small {
+  max-width: 5rem;
+  width: 100%;
 }
 
 img.medium {
@@ -250,3 +259,4 @@ img.large {
   color: #a02020;
   background-color: #ffe0e0;
 }
+

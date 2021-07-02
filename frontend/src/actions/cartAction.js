@@ -1,7 +1,7 @@
 import axios from "axios"
 import { BASKET_ADD_ITEM } from "../constants/addToCartConstant";
 
-// dispacth, getState are methodes from thunk allowing us to dispatch actions and set the result of the action in the component State using the action
+// NB: dispacth, getState are methodes from thunk allowing us to dispatch actions and set the result of the action in the component State using the action
 export const addToCart = (productId, qty) => async(dispatch, getState) => {
     // send ajax request to server to get information of a specific product in function of its id
     const { data } = await axios.get(`/api/products/${productId}`);
@@ -11,7 +11,7 @@ export const addToCart = (productId, qty) => async(dispatch, getState) => {
         type: BASKET_ADD_ITEM,
         payload:  {
             name: data.name,
-            image: data.image,
+            image: data.images,
             price: data.price,
             countInStock: data.countInStock,
             product: data._id,
@@ -19,5 +19,7 @@ export const addToCart = (productId, qty) => async(dispatch, getState) => {
             qty
         
         }
-    })
-}
+    });
+    // NB: to be able to keep states info in our app we need to send them to localStorage
+    localStorage.setItem('cartItems',JSON.stringify(getState().cart.cartItems));
+};
