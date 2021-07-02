@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../actions/cartAction';
+import { addToCart, removeFromCart } from '../actions/cartAction';
 import MessageBox from '../components/MessageBox';
 import { Link } from 'react-router-dom';
 
@@ -33,6 +33,7 @@ function CartPage(props) {
 
     const removeFromCartHandler = (id) => {
         // delet action
+        dispatch(removeFromCart(id))
 
     }
 
