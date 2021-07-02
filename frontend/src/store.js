@@ -8,8 +8,18 @@ import thunk from 'redux-thunk';
 // getState as parameters.
 // import data from './data';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
+import { cartReducer } from './reducers/cardReducer';
 
-const initialState = {};
+const initialState = {
+    cart: {
+        //using getItem method from localStorage using the 'cartItems' stated in cartAction.js
+        cartItems: localStorage.getItem('cartItems') ?
+        //if it exist I parse it as Json to convert it to json readable array 
+        JSON.parse(localStorage.getItem('cartItems')) :
+        // if doesnt exist use an array instead
+        [],
+    },
+};
 
 // 1rst case : we use datas from teh data.js file within the frontend folder
 // const reducer = (state, action) => {
@@ -20,7 +30,8 @@ const initialState = {};
 // 2nd Case : we use datas from redux Store
 const reducer =  combineReducers({
     productList: productListReducer,
-    productDetails: productDetailsReducer
+    productDetails: productDetailsReducer,
+    cart: cartReducer
 })
 
 // via composeEnhancer the react App is connected to the redux  Store & the redux devtool in Chrome
