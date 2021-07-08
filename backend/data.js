@@ -16,7 +16,8 @@ const data = {
     ],
     products: [
         {
-            _id: '1',
+            // _id only necessary in static mode, automatically addde in MongoDb mode
+            // _id: '1',
             name: 'Nike Slim Shirt',
             category: 'shirts',
             images: '/assets/p1.jpg',
@@ -28,7 +29,7 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '2',
+            // _id: '2',
             name: 'H&M Slim Shirt',
             category: 'shirts',
             images: '/assets/p2.jpg',
@@ -40,7 +41,7 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '3',
+            // _id: '3',
             name: 'Celio Slim Shirt',
             category: 'shirts',
             images: '/assets/p3.jpg',
@@ -52,7 +53,7 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '4',
+            // _id: '4',
             name: 'Gap Fit Pant',
             category: 'pants',
             images: '/assets/p4.jpg',
@@ -64,7 +65,7 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '5',
+            // _id: '5',
             name: 'Asos Fit Pant',
             category: 'pants',
             images: '/assets/p5.jpg',
@@ -76,7 +77,7 @@ const data = {
             description: 'high quality product',
         },
         {
-            _id: '6',
+            // _id: '6',
             name: 'C&A Fit Pant',
             category: 'pants',
             images: '/assets/p6.jpg',
