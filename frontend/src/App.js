@@ -1,12 +1,13 @@
 import React from 'react';
 // Set  "proxy": "http://localhost:5000", to link any request from this project to the backend API
 import { BrowserRouter, Route } from 'react-router-dom';
-import CartPage from './pages/CartPage';
-import HomePageRedux from './pages/HomePageRedux';
-import ProductPageRedux from './pages/ProductPageRedux';
 import { Link } from 'react-router-dom';
 import Test from './pages/Test';
 import { useSelector } from 'react-redux';
+import CartPage from './pages/CartPage';
+import HomePageRedux from './pages/HomePageRedux';
+import ProductPageRedux from './pages/ProductPageRedux';
+import SigninPage from './pages/SigninPage';
 
   
 
@@ -40,9 +41,10 @@ function App() {
             <main>
               <Route path="/test" component={Test}/>
               <Route path="/cart/:id?" component={CartPage} />   
-              <Route path="/" component={HomePageRedux} exact />
               <Route path="/product/:id" component={ProductPageRedux} />
               {/* path="product/id?: ? cause cart should be accessible directly*/}
+              <Route path="/signin" component={SigninPage}/>
+              <Route path="/" component={HomePageRedux} exact />
               
             </main>
             <footer className="rowFlexJustify center" >
