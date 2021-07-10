@@ -2,9 +2,11 @@ import express from 'express';
 // insert "type": "module", in .json file in order to avoid module non handlung error in terminal at launch
 import mongoose from 'mongoose';
 // import data from './data.js';
+import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js'
 
+dotenv.config();
 
 const app = express();
 // mongoose.connect('mongodb://localhost/saiyanzone',{
@@ -13,7 +15,8 @@ const app = express();
 //     useUnifiedTopology: true,
 //     useCreateIndex: true
 // });
-
+app.use(express.json());
+// app.use(express.urlrencoded({extended:true}));
 
 mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://dbUser:dbUserPassword@cluster0.zhzqe.mongodb.net/saiyanzone',{
     // since i m working from the mongoDb soft installedon my computer teh uri is mongodb+srv://dbUser:dbUserPassword@cluster0.zhzqe.mongodb.net/saiyanzone not : mongodb://localhost/<name of the database> like in teh tuto
