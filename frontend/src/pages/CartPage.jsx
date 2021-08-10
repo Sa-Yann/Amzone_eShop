@@ -118,7 +118,7 @@ function CartPage(props) {
                                 type="button" 
                                 onClick={checkoutHandler} 
                                 className="primary block"
-                                disable={cartItems.lenght === 0}
+                                disabled={cartItems.length === 0}
                             >
                                Proceed to CheckOut
                             </button>

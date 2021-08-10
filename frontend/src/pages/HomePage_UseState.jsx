@@ -28,7 +28,7 @@ function HomePage() {
                     // now that we define the action we can stop the loader and make it happen:
                     setLoading(false);
                 } catch(err) {
-                    console.log("🚀 ~ file: HomePage.jsx ~ line 29 ~ fetchData ~ err", err);
+                    // console.log("🚀 ~ file: HomePage.jsx ~ line 29 ~ fetchData ~ err", err);
                     setError(err.message);
                     setLoading(false);
                 }
@@ -41,7 +41,7 @@ function HomePage() {
             <div className="rowFlexJustify center">
                 {
                     loading ? 
-                    (<LoadingBox></LoadingBox> ):
+                    (<LoadingBox/>):
                     error ?
                     (<MessageBox variant="danger">{error}</MessageBox>) :
                     (

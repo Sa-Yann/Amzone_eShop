@@ -11,10 +11,9 @@ function MessageBox(props) {
             {/* children is a special  prop that show the content in the component it was declared 
             in our case MessageBox*/}
             {/* so the {error} that is in between teh <MessageBox>{error}</MessageBox> in 
-            HomePage.jsx will be dispay in this div via {props.children} */}
+            HomePage.jsx will be display in this div via {props.children} */}
             
         </div>
     )
 }
-
 export default MessageBox

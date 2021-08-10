@@ -12,9 +12,9 @@ function Rating(propsRating) {
                     rating >= 1 ? 
                     "fa fa-star" : 
                     rating >= 0.5 ? 
-                    "fa-solid fa-star-half-stroke" : 
+                    "fa fa-star-half-alt" : 
                     // else the only rating value is then : rating is less 0.5 then 
-                    "fa fa-star-o"
+                    "far fa-star"
                     
                 }
                 ></i>
@@ -25,9 +25,9 @@ function Rating(propsRating) {
                     rating >= 2 ? 
                     "fa fa-star" : 
                     rating >= 1.5 ? 
-                    "fa-solid fa-star-half-stroke" : 
+                    "fa fa-star-half-alt" : 
                     // else the only rating value is then :rating is less than 1.5
-                    "fa fa-star-o"
+                    "far fa-star"
                 }
                 ></i>
             </span><span>
@@ -36,8 +36,8 @@ function Rating(propsRating) {
                     rating >= 3 ? 
                     "fa fa-star" : 
                     rating >= 2.5 ?  
-                    "fa-solid fa-star-half-stroke" : 
-                    "fa fa-star-o"
+                    "fa fa-star-half-alt" : 
+                    "far fa-star"
                 }
                 ></i>
             </span><span>
@@ -46,8 +46,8 @@ function Rating(propsRating) {
                     rating >= 4 ? 
                     "fa fa-star" : 
                     rating >= 3.5 ?  
-                    "fa-solid fa-star-half-stroke" : 
-                    "fa fa-star-o"
+                    "fa fa-star-half-alt" : 
+                    "far fa-star"
                 }
                 ></i>
             </span><span>
@@ -56,12 +56,12 @@ function Rating(propsRating) {
                     rating >= 5 ? 
                     "fa fa-star" : 
                     rating >= 4.5 ?  
-                    "fa-solid fa-star-half-stroke" : 
-                    "fa fa-star-o"
+                    "fa fa-star-half-alt" : 
+                    "far fa-star"
                 }
                 ></i>
             </span>
-            <span>{numReviews+ 'reviews'}</span>
+            <span>{numReviews + ' reviews'}</span>
         </div>
     )
 }

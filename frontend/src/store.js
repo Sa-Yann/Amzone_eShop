@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 // import data from './data';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cardReducer';
+import { userSigninReducer } from './reducers/userReducer';
 
 const initialState = {
     cart: {
@@ -31,8 +32,11 @@ const initialState = {
 const reducer =  combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    userSignin: userSigninReducer,
+
 })
+    console.log("🚀 ~ file: store.js ~ line 39 ~ userSignin", userSigninReducer)
 
 // via composeEnhancer the react App is connected to the redux  Store & the redux devtool in Chrome
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

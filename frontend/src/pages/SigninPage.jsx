@@ -1,14 +1,19 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom';
+import { signin} from './../actions/userActions';
 
 function SigninPage() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
 
+    const dispatch = useDispatch();
+
     const submitHandler = (e) => {
         e.preventDefault();
         // To Do SignIn action
+        dispatch(signin(email, password));
     }   
 
     return (
@@ -22,7 +27,7 @@ function SigninPage() {
                     <input type="email"  id="email" 
                         placeholder="Enter email" 
                         required
-                        onChnage={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
@@ -30,17 +35,17 @@ function SigninPage() {
                     <input type="password"  id="password" 
                         placeholder="Enter password" 
                         required
-                        onChnage={(e) => setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div>
                     <label />
-                    <button type="submit" className="primary">Sing In</button>
+                    <button type="submit" className="primary">Sign In</button>
                 </div>
                 <div>
                     <label />
                     <div>
-                        New Customer : <Link to="/register"> Create an Account</Link>
+                        New Customer{' '}: <Link to="/register"> Create an Account</Link>
                     </div>
                 </div>
             </form>
