@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS } from "../constants/userConstant"
+import { USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT } from "../constants/userConstant"
 
 export const signin = (email, password) => async(dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password }});
@@ -13,9 +13,16 @@ export const signin = (email, password) => async(dispatch) => {
             payload: 
                 error.response && error.response.data.message ?
                 error.response.data.message :
-                error.message
-        
+                error.message       
         });
-    }
-    
-}
+    }  
+};
+
+export const signout = () => (dispatch) => {
+    localStorage.removeItem('userInfos');
+    localStorage.removeItem('cartItems');
+    dispatch({
+        type: USER_SIGNOUT
+    });
+};
+
