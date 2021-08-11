@@ -11,6 +11,7 @@ import SigninPage from './pages/SigninPage';
 import { signout } from './actions/userActions';
 import RegisterPage from './pages/RegisterPage';
 import ShippingInfoPage from './pages/ShippingInfoPage';
+import PaymentMethodPage from './pages/PaymentMethodPage';
 
   
 
@@ -66,9 +67,9 @@ function App() {
               {/* path="product/id?: ? cause cart should be accessible directly*/}
               <Route path="/signin" component={SigninPage}/>
               <Route path="/register" component={RegisterPage}/>
-              <Route path="/shipping" component={ShippingInfoPage}></Route>
+              <Route path="/shipping" component={ShippingInfoPage}/>
+              <Route path="/payment" component={PaymentMethodPage}/>
               <Route path="/" component={HomePageRedux} exact />
-              
             </main>
             <footer className="rowFlexJustify center" >
                 <p>All right reserved</p>

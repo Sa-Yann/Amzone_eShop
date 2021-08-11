@@ -42,6 +42,7 @@ export default function ShippingInfoPage(props) {
                         placeholder="Enter fullName"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
@@ -52,6 +53,7 @@ export default function ShippingInfoPage(props) {
                         placeholder="Enter Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
@@ -62,6 +64,7 @@ export default function ShippingInfoPage(props) {
                         placeholder="Enter City"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
@@ -71,6 +74,7 @@ export default function ShippingInfoPage(props) {
                         id="postalCode"
                         value={postalCode}
                         onChange={(e) => setPostalCode(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
@@ -80,6 +84,7 @@ export default function ShippingInfoPage(props) {
                         id="country"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
