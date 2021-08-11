@@ -95,25 +95,25 @@ export default function PlaceOrderView(props) {
                             <li>
                                 <div className="rowFlexJustify">
                                     <div>Items</div>
-                                    <div>€{cart.allItemsCost}</div>
+                                    <div>€{cart.allItemsCost.toFixed(2)}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="rowFlexJustify">
                                     <div>Shipping</div>
-                                    <div>€{cart.shippingCost}</div>
+                                    <div>€{cart.shippingCost.toFixed(2)}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="rowFlexJustify">
                                     <div>Taxes</div>
-                                    <div>€{cart.taxCost}</div>
+                                    <div>€{cart.taxCost.toFixed(2)}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="rowFlexJustify">
                                     <div><strong>Total Price</strong></div>
-                                    <div><strong>€{cart.totalPriceToPay}</strong></div>
+                                    <div><strong>€{cart.totalPriceToPay.toFixed(2)}</strong></div>
                                 </div>
                             </li>
                             <li>
@@ -121,7 +121,7 @@ export default function PlaceOrderView(props) {
                                 type="button"
                                 onClick={processPaymentHandler}
                                 className="primary block"
-                                disabled={cart.cartItems.lenght ===0}
+                                disabled={cart.cartItems.lenght === 0}
                                 >
                                 Proceed to Payment    
                                 </button>
