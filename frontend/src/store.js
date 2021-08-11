@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 // import data from './data';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cardReducer';
-import { userSigninReducer } from './reducers/userReducer';
+import { userRegisterReducer, userSigninReducer } from './reducers/userReducer';
 
 const initialState = {
     userSignin: {
@@ -39,7 +39,7 @@ const reducer =  combineReducers({
     productDetails: productDetailsReducer,
     cart: cartReducer,
     userSignin: userSigninReducer,
-
+    userRegister: userRegisterReducer,
 })
     // console.log("🚀 ~ file: store.js ~ line 39 ~ userSignin", userSigninReducer)
 

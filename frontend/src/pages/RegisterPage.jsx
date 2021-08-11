@@ -1,29 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { signin} from './../actions/userActions';
+import { register} from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
-function SigninPage(props) {
+function RegisterPage(props) {
 // console.log("🚀 ~ file: SigninPage.jsx ~ line 9 ~ SigninPage ~ props", props)
-
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmedPassword, setConfirmedPassword] = useState('');
 
     const redirect = props.location.search ?
         props.location.search.split('=')[1] :
         '/';
 
-    const userSignin = useSelector((state) => state.userSignin);
-    const { userInfos, loading, error}  = userSignin;
+    const userRegister = useSelector((state) => state.userRegister);
+    const { userInfos, loading, error}  = userRegister;
 
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        // To Do SignIn action
-        dispatch(signin(email, password));
+        if(password !== confirmedPassword) {
+            alert(`Password and confirmed Password don't Match`)
+        } else {
+            dispatch(register(name, email, password));
+        }
+       
     }   
 
     useEffect(() => {
@@ -37,10 +42,18 @@ function SigninPage(props) {
         <div>
             <form className="form" onSubmit={submitHandler}>
                 <div>
-                    <h1>Sign In</h1>
+                    <h1>Create an Account</h1>
                 </div>
                 {loading && <LoadingBox></LoadingBox>}
                 {error && <MessageBox variant="danger">{error}</MessageBox>}
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input type="text"  id="name" 
+                        placeholder="Enter name" 
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input type="email"  id="email" 
@@ -58,13 +71,21 @@ function SigninPage(props) {
                     />
                 </div>
                 <div>
+                    <label htmlFor="confirmedPassword">Confirmed Password</label>
+                    <input type="password"  id="confirmedPassword" 
+                        placeholder="Enter Confirmed Password" 
+                        required
+                        onChange={(e) => setConfirmedPassword(e.target.value)}
+                    />
+                </div>
+                <div>
                     <label />
-                    <button type="submit" className="primary">Sign In</button>
+                    <button type="submit" className="primary">Register</button>
                 </div>
                 <div>
                     <label />
                     <div>
-                        New Customer{' '}: <Link to="/register"> Create an Account</Link>
+                        Already have an Account{' '}: <Link to={`/signin?redirect=${redirect}`}> Go to Signin</Link>
                     </div>
                 </div>
             </form>
@@ -72,4 +93,4 @@ function SigninPage(props) {
     )
 }
 
-export default SigninPage
+export default RegisterPage

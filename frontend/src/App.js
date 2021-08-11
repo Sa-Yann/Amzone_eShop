@@ -9,6 +9,7 @@ import HomePageRedux from './pages/HomePageRedux';
 import ProductPageRedux from './pages/ProductPageRedux';
 import SigninPage from './pages/SigninPage';
 import { signout } from './actions/userActions';
+import RegisterPage from './pages/RegisterPage';
 // import { userSigninReducer } from './reducers/userReducer';
 
   
@@ -64,6 +65,7 @@ function App() {
               <Route path="/product/:id" component={ProductPageRedux} />
               {/* path="product/id?: ? cause cart should be accessible directly*/}
               <Route path="/signin" component={SigninPage}/>
+              <Route path="/register" component={RegisterPage}/>
               <Route path="/" component={HomePageRedux} exact />
               
             </main>
