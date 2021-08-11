@@ -1,5 +1,5 @@
 import axios from "axios"
-import { BASKET_ADD_ITEM, BASKET_REMOVE_ITEM } from "../constants/addToCartConstant";
+import { BASKET_ADD_ITEM, BASKET_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from "../constants/addToCartConstant";
 
 // NB: dispacth, getState are methodes from thunk allowing us to dispatch actions and set the result of the action in the component State using the action
 export const addToCart = (productId, qty) => async(dispatch, getState) => {
@@ -31,3 +31,11 @@ export const removeFromCart = (productId) => async(dispatch, getState) => {
     });
     localStorage.setItem('cartItems',JSON.stringify(getState().cart.cartItems));
 }
+
+export const saveShippingAddress = (data) => (dispatch) => {
+    dispatch({
+        type: CART_SAVE_SHIPPING_ADDRESS,
+        payload: data
+    });
+    localStorage.setItem('shippingAdress', JSON.stringify(data))
+};

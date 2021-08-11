@@ -24,6 +24,9 @@ const initialState = {
         JSON.parse(localStorage.getItem('cartItems')) :
         // if doesnt exist use an empty array instead
         [],
+        shippingAddress: localStorage.getItem('shippingAddress') ?
+        JSON.parse(localStorage.getItem('shippingAddress')) :
+        {},
     },
 };
 
@@ -41,7 +44,8 @@ const reducer =  combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
 })
-    // console.log("🚀 ~ file: store.js ~ line 39 ~ userSignin", userSigninReducer)
+
+// console.log("🚀 ~ file: store.js ~ line 39 ~ userSignin", userSigninReducer)
 
 // via composeEnhancer the react App is connected to the redux  Store & the redux devtool in Chrome
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

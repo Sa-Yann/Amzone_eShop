@@ -64,7 +64,7 @@ function SigninPage(props) {
                 <div>
                     <label />
                     <div>
-                        New Customer{' '}: <Link to="/register"> Create an Account</Link>
+                        New Customer{' '}: <Link to={`/register?redirect=${redirect}`}> Create an Account</Link>
                     </div>
                 </div>
             </form>
