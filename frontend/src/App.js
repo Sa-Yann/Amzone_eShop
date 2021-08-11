@@ -12,8 +12,7 @@ import { signout } from './actions/userActions';
 import RegisterPage from './pages/RegisterPage';
 import ShippingInfoPage from './pages/ShippingInfoPage';
 import PaymentMethodPage from './pages/PaymentMethodPage';
-
-  
+import PlaceOrderView from './pages/PlaceOrderView';
 
 
 function App() {
@@ -69,6 +68,7 @@ function App() {
               <Route path="/register" component={RegisterPage}/>
               <Route path="/shipping" component={ShippingInfoPage}/>
               <Route path="/payment" component={PaymentMethodPage}/>
+              <Route path="/placeorder" component={PlaceOrderView}/>
               <Route path="/" component={HomePageRedux} exact />
             </main>
             <footer className="rowFlexJustify center" >
