@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js'
+import orderRouter from './routers/oderRouter.js';
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://dbUser:dbUserPassword
 
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+app.use('/api/orders', orderRouter);
 
 // Route to get to 'Home' page
 app.get('/', (req, res) => {
