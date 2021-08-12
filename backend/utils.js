@@ -15,8 +15,9 @@ export const genrateToken = (user) => {
 }
 
 // Building a middleware to authetificate the user that is ordering 
+//  Middlewares accept 3 prameters: req, res, next
 export const isAuth = (req, res, next) => {
-    const authorisation = req.headers.authorization;
+    const authorisation = req.headers.authorisation;
     if(authorisation) {
         const token = authorisation.slice(7, authorisation.length); 
         //why Slice 7: Bearer thetoken623756026HBU9DC90CHNC0C => Bearer + space is 7 so Slice 7
@@ -41,6 +42,7 @@ export const isAuth = (req, res, next) => {
                 // so via decode we can retrive all saved user info that were saved in the token 
                 // that s why can set those user datas in req.user 
                     req.user = decode;
+                    // next() allow to pass user poperty in the req of req.user
                     next();
                 }
             }

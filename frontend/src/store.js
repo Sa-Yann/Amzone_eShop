@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cardReducer';
 import { userRegisterReducer, userSigninReducer } from './reducers/userReducer';
+import { orderCreateReducer } from './reducers/orderReducer';
 
 const initialState = {
     userSignin: {
@@ -18,12 +19,12 @@ const initialState = {
         null,
     },
     cart: {
-        //using getItem method from localStorage using the 'cartItems' stated in cartAction.js
+        //using getItem method from localStorage using the 'cartItems' state in cartAction.js
         cartItems: localStorage.getItem('cartItems') ?
-        //if it exist I parse it as Json to convert it to json readable array 
         JSON.parse(localStorage.getItem('cartItems')) :
         // if doesnt exist use an empty array instead
         [],
+        //if it exist I parse it as Json to convert it to json readable array 
         shippingAddress: localStorage.getItem('shippingAddress') ?
         JSON.parse(localStorage.getItem('shippingAddress')) :
         {},
@@ -44,6 +45,7 @@ const reducer =  combineReducers({
     cart: cartReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
+    orderCreate: orderCreateReducer,
 })
 
 // console.log("🚀 ~ file: store.js ~ line 39 ~ userSignin", userSigninReducer)

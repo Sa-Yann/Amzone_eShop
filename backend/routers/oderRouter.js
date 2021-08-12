@@ -9,7 +9,7 @@ orderRouter.post('/',
     isAuth,
     expressAsyncHandler(async(req, res) => {
         if(req.body.orderItems.length === 0) {
-            res.status(400).send({ message: 'Cartr is empty' });
+            res.status(400).send({ message: 'Cart is empty' });
         } else {
             const order = new Order({
                 orderItems: req.body.orderItems,
@@ -25,6 +25,7 @@ orderRouter.post('/',
             // we need to save the order 
             const createdOrder =  await order.save();
             res.status(201).send({ message: 'New Order Created', order: createdOrder})
+            // order: createdOrder: alllows to pass the info of the prder to the frontend
         }
     })
     );

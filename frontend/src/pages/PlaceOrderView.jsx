@@ -1,7 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { createOrder } from '../actions/orderActions';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 export default function PlaceOrderView(props) {
 
@@ -9,6 +13,9 @@ export default function PlaceOrderView(props) {
     if(!cart.paymentMethod) {
         props.history.push('/payment');
     }
+
+    const orderCreate = useSelector((state) => state.orderCreate);
+    const  { loading, success, error, order } = orderCreate;
 
     const numToPrice = (num) => Number(num.toFixed(2)); // 5.123 => ""5,12" via toFixed => 5.12 string to num via num
 
@@ -26,9 +33,19 @@ export default function PlaceOrderView(props) {
 
     cart.totalPriceToPay = cart.allItemsCost + cart.shippingCost + cart.taxCost;
 
+    const dispatch = useDispatch()
     const processPaymentHandler = () => {
-        // ToDo: dispatch place order action
+        // dispatching place order action renaming orderItems: cart.cartItems
+        dispatch(createOrder({...cart, orderItems: cart.cartItems}))
     }
+
+    useEffect(() => {
+        if(success) {
+            props.history.push(`/order/${order._id}`);
+            dispatch({type: ORDER_CREATE_RESET});
+        }
+
+    }, [dispatch, order, props.history, success])
 
     return (
         <div>
@@ -126,6 +143,8 @@ export default function PlaceOrderView(props) {
                                 Proceed to Payment    
                                 </button>
                             </li>
+                            {loading && <LoadingBox/>}
+                            {error && <MessageBox variant="danegr">{error}</MessageBox>}
                         </ul>
                     </div>
                 </div>
