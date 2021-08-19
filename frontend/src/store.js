@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cardReducer';
 import { userRegisterReducer, userSigninReducer } from './reducers/userReducer';
-import { orderCreateReducer } from './reducers/orderReducer';
+import { orderCreateReducer, orderDetailsReducer } from './reducers/orderReducer';
 
 const initialState = {
     userSignin: {
@@ -46,6 +46,7 @@ const reducer =  combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
     orderCreate: orderCreateReducer,
+    orderDetails: orderDetailsReducer
 })
 
 // console.log("🚀 ~ file: store.js ~ line 39 ~ userSignin", userSigninReducer)

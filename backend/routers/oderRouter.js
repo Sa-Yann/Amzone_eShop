@@ -5,9 +5,12 @@ import { isAuth } from '../utils.js';
 
 const orderRouter = express.Router();
 
-orderRouter.post('/',
+orderRouter.post(
+    '/',
     isAuth,
     expressAsyncHandler(async(req, res) => {
+        // expressAsyncHandler is middleware for handling exceptions/errors inside of
+        // async express routes and passing them to the express error handlers.
         if(req.body.orderItems.length === 0) {
             res.status(400).send({ message: 'Cart is empty' });
         } else {
@@ -28,5 +31,21 @@ orderRouter.post('/',
             // order: createdOrder: alllows to pass the info of the prder to the frontend
         }
     })
-    );
-    export default orderRouter;
+);
+
+    // API to get order Infos depending on the user id displayed in the url
+orderRouter.get(
+    '/:id',
+    isAuth,
+    expressAsyncHandler(async (req, res) => {
+      const order = await Order.findById(req.params.id);
+      if (order) {
+        res.send(order);
+      } else {
+        res.status(404).send({ message: 'Order Not Found' });
+      }
+    })
+);
+
+export default orderRouter
+      

@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage';
 import ShippingInfoPage from './pages/ShippingInfoPage';
 import PaymentMethodPage from './pages/PaymentMethodPage';
 import PlaceOrderView from './pages/PlaceOrderView';
+import CheckingOrderView from './pages/CheckingOrderView';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
               <Route path="/shipping" component={ShippingInfoPage}/>
               <Route path="/payment" component={PaymentMethodPage}/>
               <Route path="/placeorder" component={PlaceOrderView}/>
+              <Route path="/order/:id" component={CheckingOrderView}/>
               <Route path="/" component={HomePageRedux} exact />
             </main>
             <footer className="rowFlexJustify center" >

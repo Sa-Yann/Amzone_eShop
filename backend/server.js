@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js'
-import orderRouter from './routers/oderRouter.js';
+import orderRouter from './routers/oderRouter.js'
 
 dotenv.config();
 

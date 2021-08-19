@@ -1,56 +1,28 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createOrder } from '../actions/orderActions';
-import CheckoutSteps from '../components/CheckoutSteps';
-import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import { orderDetails } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
-export default function PlaceOrderView(props) {
+export default function CheckingOrderView (props) {
 
-    const cart = useSelector((state) => state.cart);
-    if(!cart.paymentMethod) {
-        props.history.push('/payment');
-    }
-
-    const orderCreate = useSelector((state) => state.orderCreate);
-    const  { loading, success, error, order } = orderCreate;
-
-    const numToPrice = (num) => Number(num.toFixed(2)); // 5.123 => ""5,12" via toFixed => 5.12 string to num via num
-
-    cart.allItemsCost = numToPrice(
-        cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
-    );
-    // Shipping Cost
-    cart.shippingCost = 
-        // for each allItemsCost more expensive less 200 the shippingCost is 0 otherwise it s 10€
-        cart.itemsPrice > 200 ?
-        numToPrice(0) :
-        numToPrice(10);
-
-    cart.taxCost = numToPrice(0.15 * cart.allItemsCost);
-
-    cart.totalPriceToPay = cart.allItemsCost + cart.shippingCost + cart.taxCost;
+    const orderId = props.match.params.id
+    const detailedOrder =  useSelector((state) => state.orderDetails)
+    const { order, loading, error } = detailedOrder
 
     const dispatch = useDispatch()
-    const processPaymentHandler = () => {
-        // dispatching place order action renaming orderItems: cart.cartItems
-        dispatch(createOrder({...cart, orderItems: cart.cartItems}))
-    }
-
+    
     useEffect(() => {
-        if(success) {
-            props.history.push(`/order/${order._id}`);
-            // console.log("🚀 ~ file: PlaceOrderView.jsx ~ line 45 ~ useEffect ~ order._id", order._id);
-            dispatch({type: ORDER_CREATE_RESET});
-        }
+        dispatch(orderDetails(orderId));
 
-    }, [dispatch, order, props.history, success])
+    }, [dispatch, orderId]);
 
-    return (
+    return loading ? (<LoadingBox/>) :
+        error ? (<MessageBox variant="danger">{error}</MessageBox>) :
+        (
         <div>
-            <CheckoutSteps step1 step2 step3 step4/>
+            <h1> Here are your order {order._id} details</h1>
             <div className="rowFlexJustify rowTop">
                 <div className="col-2">
                     <ul>
@@ -58,13 +30,13 @@ export default function PlaceOrderView(props) {
                             <div className="card card__Body">
                                 <h2>Shipping</h2>
                                 <p>
-                                    <strong>Name:{' '}</strong>{cart.shippingAddress.fullName}
+                                    <strong>Name:{' '}</strong>{order.shippingAddress.fullName}
                                     <br/>
                                     <strong>Address:</strong>
-                                    {' '}{cart.shippingAddress.address},
-                                    {' '}{cart.shippingAddress.city},
-                                    {' '}{cart.shippingAddress.postalCode},
-                                    {' '}{cart.shippingAddress.country}                                    
+                                    {' '}{order.shippingAddress.address},
+                                    {' '}{order.shippingAddress.city},
+                                    {' '}{order.shippingAddress.postalCode},
+                                    {' '}{order.shippingAddress.country}                                    
                                 </p>
                             </div>
                         </li>
@@ -72,7 +44,7 @@ export default function PlaceOrderView(props) {
                             <div className="card card__Body">
                                 <h2>Payment</h2>
                                 <p>
-                                    <strong>Payment Method:{' '}</strong>{' '}{cart.paymentMethod}   
+                                    <strong>Payment Method:{' '}</strong>{' '}{order.paymentMethod}   
                                     <br/>                               
                                 </p>
                             </div>
@@ -82,7 +54,7 @@ export default function PlaceOrderView(props) {
                                 <h2>Ordered Itemes</h2>
                                 <ul>
                     {
-                        cart.cartItems.map((item) => (
+                        order.orderItems.map((item) => (
                             <li key={item.product} className="rowFlexJustify">
                                 <div >
                                     <div>
@@ -113,39 +85,27 @@ export default function PlaceOrderView(props) {
                             <li>
                                 <div className="rowFlexJustify">
                                     <div>Items</div>
-                                    <div>€{cart.allItemsCost.toFixed(2)}</div>
+                                    <div>€{order.allItemsCost.toFixed(2)}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="rowFlexJustify">
                                     <div>Shipping</div>
-                                    <div>€{cart.shippingCost.toFixed(2)}</div>
+                                    <div>€{order.shippingCost.toFixed(2)}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="rowFlexJustify">
                                     <div>Taxes</div>
-                                    <div>€{cart.taxCost.toFixed(2)}</div>
+                                    <div>€{order.taxCost.toFixed(2)}</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="rowFlexJustify">
                                     <div><strong>Total Price</strong></div>
-                                    <div><strong>€{cart.totalPriceToPay.toFixed(2)}</strong></div>
+                                    <div><strong>€{order.totalPriceToPay.toFixed(2)}</strong></div>
                                 </div>
                             </li>
-                            <li>
-                                <button
-                                type="button"
-                                onClick={processPaymentHandler}
-                                className="primary block"
-                                disabled={cart.cartItems.lenght === 0}
-                                >
-                                Proceed to Payment    
-                                </button>
-                            </li>
-                            {loading && <LoadingBox/>}
-                            {error && <MessageBox variant="danger">{error}</MessageBox>}
                         </ul>
                     </div>
                 </div>
